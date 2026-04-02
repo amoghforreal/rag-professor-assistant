@@ -1,12 +1,7 @@
-def embed_texts(texts: list[str]) -> list[list[float]]:
-    """
-    Placeholder embedding function.
-    Will be replaced by a real model later.
-    """
-    embeddings = []
+from sentence_transformers import SentenceTransformer
 
-    for text in texts:
-        vector = [float(len(text))]  # dummy embedding
-        embeddings.append(vector)
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
-    return embeddings
+def embed_texts(texts):
+    embeddings = model.encode(texts)
+    return embeddings.tolist()
